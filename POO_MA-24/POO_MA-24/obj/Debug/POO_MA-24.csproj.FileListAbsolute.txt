@@ -1,0 +1,7 @@
+C:\Users\Luca.CODURI\Documents\Projet MA-24\POO_MA-24\POO_MA-24\bin\Debug\POO_MA-24.exe.config
+C:\Users\Luca.CODURI\Documents\Projet MA-24\POO_MA-24\POO_MA-24\bin\Debug\POO_MA-24.exe
+C:\Users\Luca.CODURI\Documents\Projet MA-24\POO_MA-24\POO_MA-24\bin\Debug\POO_MA-24.pdb
+C:\Users\Luca.CODURI\Documents\Projet MA-24\POO_MA-24\POO_MA-24\obj\Debug\POO_MA-24.csprojAssemblyReference.cache
+C:\Users\Luca.CODURI\Documents\Projet MA-24\POO_MA-24\POO_MA-24\obj\Debug\POO_MA-24.csproj.CoreCompileInputs.cache
+C:\Users\Luca.CODURI\Documents\Projet MA-24\POO_MA-24\POO_MA-24\obj\Debug\POO_MA-24.exe
+C:\Users\Luca.CODURI\Documents\Projet MA-24\POO_MA-24\POO_MA-24\obj\Debug\POO_MA-24.pdb
