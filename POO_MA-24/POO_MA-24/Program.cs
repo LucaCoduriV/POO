@@ -59,6 +59,7 @@ namespace POO_MA_24
         public class Joueur
         {
             public int pointsVie { get; private set; }
+            public bool estVivant() {return pointsVie>0; }
 
             public Joueur(int pointsVie)
             {
@@ -89,21 +90,58 @@ namespace POO_MA_24
             }
         }
 
+        public static Monstre creationMonstre()
+        {
+            int type = rand.Next(1, 7);
+            if(type <= 3) { return new Monstre(); }
+            else { return new MonstreDifficile(); }
+        }
 
         static void Main(string[] args)
         {
-            Joueur joueur = new Joueur(150);
-            Monstre monstre = new Monstre();
-            MonstreDifficile difficile = new MonstreDifficile();
+            Joueur stephane = new Joueur(150);
+            int numero = 0;
+            int coupFacile = 0, coupDifficle = 0;
 
-            Console.WriteLine(joueur.LancerDe());
-            Console.WriteLine(monstre.LancerDe());
-            Console.WriteLine(difficile.LancerDe());
-
-            while (true)
+            while (stephane.estVivant())
             {
+                Monstre monstre = creationMonstre();
+                var test = monstre.GetType().ToString();
+                string[] test2 = new string[2];
+                test2 = test.Split('+');
 
+                numero++;
+                Console.WriteLine("\n\n\nmonstre numéro: "+ numero +" de type " + test2[1]);
+
+                while (monstre.estVivant && stephane.estVivant())
+                {
+                    Console.WriteLine("stephane attaque le monstre !");
+                    stephane.Attaque(monstre);
+                    if (monstre.estVivant)
+                    {
+                        Console.WriteLine("le monstre est toujours vivant et attaque stephane !");
+                        monstre.Attaque(stephane);
+                        Console.WriteLine("il reste à stéphane " + stephane.pointsVie + " points de vie");
+                    }
+                    else { Console.WriteLine("le monstre à été vaincu"); }
+
+                    if (stephane.estVivant())
+                    {
+                        if(monstre is Monstre)
+                        {
+                            coupFacile++;
+                        }
+                        if(monstre is MonstreDifficile)
+                        {
+                            coupDifficle++;
+                        }
+                    }
+                    
+                }
             }
+            Console.WriteLine("\nAïe! stephane est mort, il a vaincu {0} monstre et {1} monstre difficle",coupFacile,coupDifficle);
+            Console.WriteLine("\nil a donc un score total de {0} points",coupFacile + 2*coupDifficle);
+            while (true) { }
         }
     }
 }
