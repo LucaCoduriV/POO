@@ -106,22 +106,26 @@ namespace POO_MA_24
             else { return new MonstreDifficile(); }
         }
 
+        //Le main contient le fonctionnement du jeu
         static void Main(string[] args)
         {
+            //création d'un joueur
             Joueur stephane = new Joueur(150);
             int numero = 0;
             int coupFacile = 0, coupDifficle = 0;
 
+            //Tant que le joueur stephane est vivant on créer des monstres
             while (stephane.estVivant())
             {
+                //On crée un nouveau monstre à chaque fois que l'ancien à été vaincu
                 Monstre monstre = creationMonstre();
                 var test = monstre.GetType().ToString();
-                string[] test2 = new string[2];
-                test2 = test.Split('+');
-
+                string[] type = new string[2];
+                type = test.Split('+');
+                //le numero indiquant la quantité de monstre créé
                 numero++;
-                Console.WriteLine("\n\n\nmonstre numéro: "+ numero +" de type " + test2[1]);
-
+                Console.WriteLine("\n\n\nmonstre numéro: "+ numero +" de type " + type[1]);
+                //tant que le monstre est vivant ainsi que le joueur le combat continue
                 while (monstre.estVivant && stephane.estVivant())
                 {
                     Console.WriteLine("stephane attaque le monstre !");
@@ -133,7 +137,7 @@ namespace POO_MA_24
                         Console.WriteLine("il reste à stéphane " + stephane.pointsVie + " points de vie");
                     }
                     else { Console.WriteLine("le monstre à été vaincu"); }
-
+                    //ajout des points pour avoir vaincu le monstre
                     if (stephane.estVivant())
                     {
                         if(monstre is Monstre)
@@ -148,6 +152,7 @@ namespace POO_MA_24
                     
                 }
             }
+            //Résumé de la partie
             Console.WriteLine("\nAïe! stephane est mort, il a vaincu {0} monstre et {1} monstre difficle",coupFacile,coupDifficle);
             Console.WriteLine("\nil a donc un score total de {0} points",coupFacile + 2*coupDifficle);
             Console.ReadKey();
