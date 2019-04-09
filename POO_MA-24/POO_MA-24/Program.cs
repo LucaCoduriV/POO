@@ -9,9 +9,11 @@ namespace POO_MA_24
     
     class Program
     {
+        //Création d'un objet random.
         public static Random rand = new Random();
         
-
+        //Création d'une class Monstre, Le monstre peut attaquer, subir des degats, et lancer le Dé.
+        //Le monstre a une puissance d'attaque et peut être vivant ou mort.
         public class Monstre
         {
             public bool estVivant { get; private set; }
@@ -36,6 +38,8 @@ namespace POO_MA_24
                 }
             }
         }
+        //Création d'une class MonstreDifficile qui hérite de la class Monstre. Elle a donc les mêmes possibilité que la class Monstre.
+        //Mais elle possède une méthode en plus: SortMagique()
         public class MonstreDifficile : Monstre
         {
             private const int degatsSort = 5;
@@ -44,11 +48,13 @@ namespace POO_MA_24
             {
 
             }
+            //Si j'ai bien compris, override permet de remplacer/modifier le comportement de la methode attaquer
             public override void Attaque(Joueur joueur)
             {
                 base.Attaque(joueur);
                 joueur.SubitDegats(SortMagique());
             }
+            //Grâce à cette méthode si le monstreDifficile a de la chance il pourra faire plus de dégats.
             public int SortMagique()
             {
                 int lance = this.LancerDe();
@@ -56,6 +62,8 @@ namespace POO_MA_24
                 return this.LancerDe() * degatsSort;
             }
         }
+        //la class Joueur peut subir des degâts, attaquer, savoir si son bouclier fonctionne et lancer le Dé.
+        //La class Joueur a des points de vie et peut être vivante ou pas vivante.
         public class Joueur
         {
             public int pointsVie { get; private set; }
@@ -90,6 +98,7 @@ namespace POO_MA_24
             }
         }
 
+        //creationMonstre() est une fonction qui retourne un monstre normal ou difficile.
         public static Monstre creationMonstre()
         {
             int type = rand.Next(1, 7);
@@ -141,7 +150,7 @@ namespace POO_MA_24
             }
             Console.WriteLine("\nAïe! stephane est mort, il a vaincu {0} monstre et {1} monstre difficle",coupFacile,coupDifficle);
             Console.WriteLine("\nil a donc un score total de {0} points",coupFacile + 2*coupDifficle);
-            while (true) { }
+            Console.ReadKey();
         }
     }
 }
